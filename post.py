@@ -63,6 +63,7 @@ day = current_time.day
 month = current_time.month
 year = current_time.year
 print("Today's date is: " + str(day) + '/' + str(month) + '/' + str(year))
+
 current_time += datetime.timedelta(days = int(d['period']))
 day = current_time.day
 month = current_time.month
@@ -144,4 +145,4 @@ while True:
                     print('Email ERROR!')
             print(message)
         centerid_old = list.copy(centerid_new)
-    time.sleep(10)
+    time.sleep(int(d['speed']))

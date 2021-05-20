@@ -2,3 +2,4 @@ ipadress xxx.xxx.xxx.xxx
 gmail_user example@example.com
 gmail_password password
 period 1
+speed 10
