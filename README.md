@@ -5,6 +5,8 @@
    
  - Tested with other online services like Under45, it is definitely faster and much more reliable than that.
 
+ - Added a main.exe file to run the script without running the main.py file!
+
 > In my testing it notified for vaccine before it showed up on Cowin website!
 
   
