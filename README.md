@@ -39,4 +39,4 @@
 
 2. Update **params.txt** file, Look at *Setup*.
 
-3. Run: `python main.py`
+3. Run: `python main.py` OR `Open main.exe`
