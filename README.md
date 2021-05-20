@@ -17,7 +17,7 @@
 
 	**Note: Your smartphone will be used to send SMS notification, carrier charges may apply.**
 
- 3. Enter your ipaddress from AirMore app in **params.txt -> ipadress**, make sure phone and pc are on same WiFi network.
+ 3. Enter your ipaddress from AirMore app(3 dots -> Get IP) in **params.txt -> ipadress**, make sure phone and pc are on same WiFi network.
 
  4. Setup a dummy Gmail account: If you want E-Mail functionality. Turn on less secure apps on the Gmail account. [Link](https://support.google.com/accounts/answer/6010255?hl=en)
  
