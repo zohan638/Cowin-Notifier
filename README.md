@@ -11,20 +11,22 @@ Tested with other online services like Under45, it is definitely faster and much
 ## How to Setup:
 
  1. Install AirMore app on your smartphone: If you want SMS functionality [Andriod Play Store](https://play.google.com/store/apps/details?id=com.airmore).
-**Note: Your smartphone will be used to send SMS notification, carrier charges may apply.**
 
- 2. Enter your ipaddress from AirMore app in **params.txt -> ipadress**.
+	**Note: Your smartphone will be used to send SMS notification, carrier charges may apply.**
 
- 3. Setup a dummy Gmail account: If you want E-Mail functionality. Turn on less secure apps on the Gmail account. [Link](https://support.google.com/accounts/answer/6010255?hl=en)
+ 3. Enter your ipaddress from AirMore app in **params.txt -> ipadress**.
+
+ 4. Setup a dummy Gmail account: If you want E-Mail functionality. Turn on less secure apps on the Gmail account. [Link](https://support.google.com/accounts/answer/6010255?hl=en)
  
- 4. Enter your Email ID in **params.txt -> gmail_user**.
+ 5. Enter your Email ID in **params.txt -> gmail_user**.
  
- 5. Enter your Password in **params.txt -> gmail_password**.
+ 6. Enter your Password in **params.txt -> gmail_password**.
  
- 6. Enter the number of days after which you want to check availability in **params.txt -> period**.
+ 7. Enter the number of days after which you want to check availability in **params.txt -> period**.
  
- 7. Enter the amount of delay in seconds after which you want to check for update **params.txt -> speed.**
- **Note: do not reduce under 3 seconds. 10 seconds is what I tested for.**
+ 8. Enter the amount of delay in seconds after which you want to check for update **params.txt -> speed.**
+
+	 **Note: do not reduce under 3 seconds. 10 seconds is what I tested for.**
 
   
 
