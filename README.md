@@ -9,7 +9,7 @@
 
   
 
-## How to Setup:
+# How to Setup:
 
  1. Install AirMore app on your smartphone: If you want SMS functionality [Andriod Play Store](https://play.google.com/store/apps/details?id=com.airmore).
 
@@ -31,7 +31,7 @@
 
   
 
-## How to run:
+# How to run:
 
 1. Run: `pip3 install -r requirements.txt`
 
