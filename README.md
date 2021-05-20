@@ -1,8 +1,9 @@
 
 # Cowin-Notifier
 
-This is a single Python3 file which will notify you regarding vaccine availability via E-mail as well as SMS!
-Tested with other online services like Under45, it is definitely faster and much more reliable than that.
+ - This is a single Python3 file which will notify you regarding vaccine availability via E-mail as well as SMS!
+   
+ - Tested with other online services like Under45, it is definitely faster and much more reliable than that.
 
 > In my testing it notified for vaccine before it showed up on Cowin website!
 
