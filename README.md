@@ -34,9 +34,10 @@
   
 
 # How to run:
+1. Make sure you have `python3` and `pip3` installed on your machine.
 
-1. Run: `pip3 install -r requirements.txt`
+2. Run: `pip3 install -r requirements.txt`
 
-2. Update **params.txt** file, Look at *Setup*.
+3. Update **params.txt** file, Look at *Setup*.
 
-3. Run: `python main.py` OR `Open main.exe`
+4. Run: `python main.py` OR `Open main.exe`
