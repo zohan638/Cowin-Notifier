@@ -103,9 +103,7 @@ centerid_old = []
 while True:
     r = requests.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict', headers=headers, params=params)
     data = json.loads(r.text)
-    # file = open('data.txt', 'w')
-    # file.write(str(data))
-    # file.close()
+    
     if data['sessions']:
         message = ""
         centerid_new = []
