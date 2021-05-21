@@ -1,5 +1,6 @@
 
 # Cowin-Notifier
+ - Simply run main.exe(standalone executable), **NO NEED TO INSTALL PYTHON FOR THIS**! Just follow *How to Setup*.
 
  - This is a single Python3 file which will notify you regarding vaccine availability via E-mail as well as SMS!
    
@@ -12,6 +13,7 @@
   
 
 # How to Setup:
+ **Use this only if you want E-Mail and/or SMS Notifications. The actuall app WILL PRINT slot availability!**
 
  1. Install AirMore app on your smartphone: If you want SMS functionality [Andriod Play Store](https://play.google.com/store/apps/details?id=com.airmore).
 
