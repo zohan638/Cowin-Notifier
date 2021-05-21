@@ -103,13 +103,16 @@ centerid_old = []
 while True:
     r = requests.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict', headers=headers, params=params)
     data = json.loads(r.text)
-
+    # file = open('data.txt', 'w')
+    # file.write(str(data))
+    # file.close()
     if data['sessions']:
         message = ""
         centerid_new = []
         for i in data['sessions']:
-            centerid_new.append(str(i['center_id']))
-            if str(i['center_id']) not in centerid_old:
+            if i['available_capacity'] != 0:
+                centerid_new.append(str(i['center_id']))
+            if str(i['center_id']) not in centerid_old and i['available_capacity'] != 0:
                 # print(str(i['center_id']) + '\n' + str(i['name']) + '\n' + str(i['pincode']) + '\n' + str(i['vaccine']) + '\n' + str(i['date']))
                 message += f"""{i['name']}
 {i['pincode']}
