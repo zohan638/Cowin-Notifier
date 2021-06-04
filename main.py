@@ -26,10 +26,11 @@ try:
 except:
     print('Phone not available - SMS NOT WORKING!')
 
-print("Do you want:")
+print("Do you want receive:")
 print("1. SMS alert.")
 print("2. Email alert.")
 print("3. Both.")
+print("4. No alerts just log in console.")
 prompt = '> '
 phone = None
 mail = None
@@ -45,6 +46,8 @@ if choice == str(3):
     phone = input(prompt)
     print("Enter Email-ID:")
     mail = str(input(prompt))
+if choice == str(4):
+    pass
 
 gmail_user = d['gmail_user']
 gmail_password = d['gmail_password']
@@ -52,23 +55,17 @@ gmail_password = d['gmail_password']
 sent_from = gmail_user
 to = [mail]
 
-print("Enter the name of state:")
-sname = str(input(prompt))
-print("Enter the name of district:")
-dname = str(input(prompt))
-sid, did = None, None
-
 current_time = datetime.datetime.now(pytz.timezone('Asia/Kolkata'))
 day = current_time.day
 month = current_time.month
 year = current_time.year
-print("Today's date is: " + str(day) + '/' + str(month) + '/' + str(year))
+print("\nToday's date is: " + str(day) + '/' + str(month) + '/' + str(year))
 
 current_time += datetime.timedelta(days = int(d['period']))
 day = current_time.day
 month = current_time.month
 year = current_time.year
-print("Checking availability for: " + str(day) + '/' + str(month) + '/' + str(year))
+print("Checking availability for: " + str(day) + '/' + str(month) + '/' + str(year) + "\n")
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36',
@@ -79,20 +76,69 @@ headers = {
 r = requests.get('https://cdn-api.co-vin.in/api/v2/admin/location/states', headers=headers)
 data = json.loads(r.text)
 
-for i in data['states']:
-    if sname.lower() in i['state_name'].lower():
-        sid = i['state_id']
+sid, did = None, None
+
+while True:
+    sname = {}
+    print("Enter the name of state:")
+    name = str(input(prompt))
+
+    for i in data['states']:
+        if name.lower() in i['state_name'].lower():
+            sname[i['state_name']] = i['state_id']
+
+    if len(sname.keys()) == 1:
+        for i in sname.keys():
+            sid = sname[i]
+            sname = i
+        print("State Name: " + sname)
+        break
+    
+    elif len(sname.keys()) > 1:
+        print("Do you mean:", end=" ")
+
+        for j, i in enumerate(sname.keys()):
+            if j < len(sname.keys()) - 1:
+                print(i + " /", end=" ")
+            
+            else:
+                print(i + "?")
+
+    else:
+        print("Wrong State Name Chosen!")
 
 r = requests.get('https://cdn-api.co-vin.in/api/v2/admin/location/districts/' + str(sid), headers=headers)
 data = json.loads(r.text)
 
-for i in data['districts']:
-    if dname.lower() in i['district_name'].lower():
-        did = i['district_id']
+while True:
+    dname = {}
 
-if (did == None or sid == None):
-    print("District or State name INVALID.")
-    sys.exit()
+    print("Enter the name of district:")
+    name = str(input(prompt))
+
+    for i in data['districts']:
+        if name.lower() in i['district_name'].lower():
+            dname[i['district_name']] = i['district_id']
+
+    if len(dname.keys()) == 1:
+        for i in dname.keys():
+            did = dname[i]
+            dname = i
+        print("District Name: " + dname)
+        break
+    
+    elif len(dname.keys()) > 1:
+        print("Do you mean:", end=" ")
+
+        for j, i in enumerate(dname.keys()):
+            if j < len(dname.keys()) - 1:
+                print(i + " /", end=" ")
+            
+            else:
+                print(i + "?")
+
+    else:
+        print("Wrong District Name Chosen!")
 
 params = (
     ('district_id', str(did)),
@@ -103,7 +149,7 @@ centerid_old = []
 while True:
     r = requests.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict', headers=headers, params=params)
     data = json.loads(r.text)
-    
+
     if data['sessions']:
         message = ""
         centerid_new = []
@@ -117,8 +163,17 @@ while True:
 {i['vaccine']}
 {i['date']}
 {i['min_age_limit']}+
+Dose 1: {i['available_capacity_dose1']}
+Dose 2: {i['available_capacity_dose2']}
+Total: {i['available_capacity']}"""
+            if i['fee_type'] == 'Paid':
+                message += f"""
+{i['fee_type']}: INR{i['fee']}""" 
 
-"""     
+            message += """
+
+"""
+
         print(f"{centerid_new} , {centerid_old}")
         if not np.array_equal(np.sort(np.array(centerid_new)), np.sort(np.array(centerid_old))):
             if phone != None:
